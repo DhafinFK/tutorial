@@ -22,6 +22,11 @@ class ProductTest {
     }
 
     @Test
+    void testGetProductName() {
+        assertEquals("eb558e9f-1c39-460e-8860-71af6af63bd6", this.product.getProductId());
+    }
+
+    @Test
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
     }
