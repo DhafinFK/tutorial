@@ -30,14 +30,14 @@ class ProductControllerTest {
     void testProductListPage() {
         Model model = mock(Model.class);
         String template = productController.productListPage(model);
-        assertEquals("productList", template);
+        assertEquals("ProductList", template);
     }
 
     @Test
     void testCreateProductGet() {
         Model model = mock(Model.class);
         String template = productController.createProductPage(model);
-        assertEquals("createProduct", template);
+        assertEquals("CreateProduct", template);
     }
 
     @Test
@@ -54,7 +54,7 @@ class ProductControllerTest {
         Model model = mock(Model.class);
         Product testProduct = new Product();
         String template = productController.editProductPage(model, "testId");
-        assertEquals("editProduct", template);
+        assertEquals("EditProduct", template);
     }
 
     @Test

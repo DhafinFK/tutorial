@@ -21,6 +21,6 @@ class HomeControllerTest {
     @Test
     void homePageTemplateString() {
         String template = homePageController.homePage();
-        assertEquals("homePage", template);
+        assertEquals("HomePage", template);
     }
 }
