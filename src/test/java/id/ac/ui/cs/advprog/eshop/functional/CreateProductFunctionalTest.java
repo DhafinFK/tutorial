@@ -39,7 +39,7 @@ public class CreateProductFunctionalTest {
     }
 
     @Test
-    void pageTitle_isCorrect(ChromeDriver driver) throws Exception {
+    void pageTitleIsCorrect(ChromeDriver driver) throws Exception {
         // Exercise
         driver.get(baseUrl);
         String pageTitle = driver.getTitle();
@@ -49,7 +49,7 @@ public class CreateProductFunctionalTest {
     }
 
     @Test
-    void listMessage_listPage_isCorrect(ChromeDriver driver) throws Exception {
+    void listMessageAndListPageIsCorrect(ChromeDriver driver) throws Exception {
         // Exercise
         driver.get(baseUrl);
         String welcomeMessage = driver.findElement(By.tagName("h2")).getText();
@@ -59,7 +59,7 @@ public class CreateProductFunctionalTest {
     }
 
     @Test
-    void simulate_createProduct(ChromeDriver driver) throws Exception {
+    void simulateCreateProduct(ChromeDriver driver) throws Exception {
         driver.get(baseUrl);
 
         String testProductName = "Test Product";
