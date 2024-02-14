@@ -1,3 +1,24 @@
+# Tutorial 2
+link web app: https://eshop-dhafinfk.koyeb.app/
+
+## List Quality Code Issues
+
+### 1. Renaming bad function names
+Dari kode sebelumnya pmd scanner memberikan peringatan bahwa masih ada beberapa penamaan function yang tidak menggunakan
+camel case jadi saya ganti menggunakan camel case sesuai dengan best practice java.
+
+### 2. Removing public access modifier in interface class
+Dari hasil analisis pmd method-method pada interface sudah public jadi saya tidak perlu memberikan public modifier lagi
+ke method method dalam interface
+
+### 3. Removing unnecessary imports
+Dari hasil analisis pmd ternyata dari kode original masih terdapat beberapa import yang tidak digunakan
+sehingga saya menghapus import tersebut untuk mengurangi kotornya kode
+
+## Current implementation of CI/CD
+Menurut saya repository github saya sudah memenuhi konsep dasar dari CI/CD dimana codebase saya setiap kali terjadi
+perubahan akan melakukan sebuah workflow yang memeriksa integrasi kode baru dan melakukan deploy ulang atau CI/CD.
+
 # Reflection 1
 ## Implementasi Clean Code Practice Pada Tugas:
 
