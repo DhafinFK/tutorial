@@ -1,6 +1,11 @@
 # Tutorial 2
 link web app: https://eshop-dhafinfk.koyeb.app/
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DhafinFK_tutorial-1&metric=coverage)](https://sonarcloud.io/summary/new_code?id=DhafinFK_tutorial-1)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DhafinFK_tutorial-1&metric=bugs)](https://sonarcloud.io/summary/new_code?id=DhafinFK_tutorial-1)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=DhafinFK_tutorial-1&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=DhafinFK_tutorial-1)
+
+
 ## List Quality Code Issues
 
 ### 1. Renaming bad function names
