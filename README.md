@@ -1,4 +1,14 @@
-# Exercise 3
+# Reflection 3
+## Applied Principles in Project
+- ### **SRP**
+    Singkatnya satu kelas hanya melakukan satu tanggung jawabnya. Oleh karen itu, saya memisahkan class controller
+yang digabung pada branch "before-solid" menjadi dua class yaitu CarController dan ProductController. yang menjalankan
+tugas dan tanggung jawab masing masing, tidak saling terkait.
+- ### **DIP**
+    Pengaplikasian DIP yang sayapakai dalam project saya adalah menggunakan CarServiceImpl yang menggantikan CarService
+pada CarController untuk menghindari coupling antara CarService dan CarServiceImpl. Selain itu, alasan lainnya adalah 
+agar saat terdapat perubahan dalam CarService, perubahan tersebut tidak merusak CarController.
+
 ## Advantages of applying SOLID principles
 - ### **Improved Maintainability:** 
     Dengan mengaplikasikan prinsip SOLID maka class yang kita buat mengaplikasikan prinsip 
