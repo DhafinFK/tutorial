@@ -1,3 +1,51 @@
+# Exercise 3
+## Advantages of applying SOLID principles
+- ### **Improved Maintainability:** 
+    Dengan mengaplikasikan prinsip SOLID maka class yang kita buat mengaplikasikan prinsip 
+(SRP), maka aplikasi kita akan lebih mudah di-*maintain* dan diperbarui karena perubahan di satu aspek sistem kecil
+kemungkinannya mempengaruhi bagian kode lain.
+- ### **Enhanced Scalability:** 
+    Kode aplikasi yang telah kita buat akan menjadi lebih mudah untuk ditambahkan fitur baru dan
+diupdate tanpa harus terlalu merombak kode yang sudah ada karena aplikasi yang dibuat menjadi scalable.
+- ### **Increased Flexibility:**
+    Bila mengikuti prinsip OCP maka kode kita akan menjadi lebih fleksibel karena dapat menambahkan fitur baru tanpa
+perlu mengubah kode apapun yang sudah dituliskan dalam codebase.
+- ### **Better Usability:**
+    Bila kode yang kita gunakan mengikuti prinsip LSP maka kode akan menjadi lebih *reuseable* karena prinsip ini 
+memastikan kalau sebuah kelas dan subclass nya bisa digunakan bertukaran tanpa mengakibatkan error.
+- ### **Easier Testing and Integeration:**
+    Dengan menggunakan prinsip DIP, kita dapat sistem jadi lebih mudah dilakukan testing dan diintegrasi karena modul
+level tinggi tidak bergantung erat dengan modul level rendah.
+- ### **Reduced Coupling:**
+    Prinsip ISP menganjurkan kalau client jangan sampai terpaksa bergantung pada method-method yang tidak dipakainya.
+Dengan membuat interfaces yang relatif kecil dan spesifik pada client maka prinsip ini membantu mengurangi keterkaitan
+antara bagian-bagian berbeda pada kode.
+- ### **Enhanced Code Understandability;:**
+    Dengan mengikut prinsip SOLID, maka codebase kita cenderung menjadi lebih terstruktur dan lebih mudah dibaca.
+
+## Disadvantages of not applying SOLID principles
+- ### **Increased Complexity:**
+    Tanpa mengikuti Prinsip Tanggung Jawab Tunggal, kelas atau modul dapat berakhir dengan menangani banyak tanggung 
+jawab. Ini dapat membuat sistem lebih kompleks dan lebih sulit untuk dipahami.
+- ### **Reduced Flexibility::**
+    Mengabaikan Prinsip Terbuka/Tertutup menghasilkan perangkat lunak yang sulit untuk diperluas tanpa memodifikasi kode
+yang ada. Kurangnya fleksibilitas ini dapat menyebabkan arsitektur yang rapuh
+- ### Difficulty in Maintenance and Updates: **
+    Perangkat lunak yang tidak mengikuti Prinsip Substitusi Liskov dapat menjadi sulit untuk dipelihara, karena 
+menggantikan subkelas untuk superkelas dapat memperkenalkan bug dan perilaku yang tidak diharapkan.
+- ### **Tight Coupling:**
+    Tidak mematuhi Prinsip Segregasi Antarmuka dan Prinsip Inversi Ketergantungan sering kali menyebabkan kopling ketat 
+antar komponen. Ini dapat membuat sistem lebih sulit untuk dimodifikasi, diuji, dan dipelihara.
+- ### **Increased Testing Effort:**
+  Sistem dengan komponen yang erat terkait lebih menantang untuk diuji karena perubahan pada satu bagian dari sistem
+mungkin memerlukan perubahan atau pengujian ulang dari bagian lain.
+- ### **Poor Reusability:**
+  Ketika komponen perangkat lunak tidak dirancang dengan tanggung jawab yang jelas dan tunggal, menggunakannya kembali 
+di bagian yang berbeda dari sistem atau dalam proyek yang berbeda menjadi sulit.
+- ### **Reduced Scalability::**
+  Perangkat lunak yang erat terkait dan kompleks lebih sulit untuk diskalakan. Skalasi sistem seperti itu sering kali 
+memerlukan refaktorisasi yang signifikan atau bahkan desain ulang yang lengkap, yang dapat mahal dan memakan waktu.
+
 # Tutorial 2
 link web app: https://eshop-dhafinfk.koyeb.app/
 
