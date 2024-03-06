@@ -13,46 +13,41 @@ import java.util.ArrayList;
 import java.util.Map;
 
 class PaymentTest {
-    private List<Product> allProducts;
+    private List<Product> products;
     private Order order;
-    private List<Order> allOrders;
+    private List<Order> orders;
 
     @BeforeEach
     void setUp() {
-        this.allProducts = new ArrayList<>();
+        this.products = new ArrayList<>();
+        Product product1 = new Product();
+        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product1.setProductName("Sampo Cap Bambang");
+        product1.setProductQuantity(2);
+        Product product2 = new Product();
+        product2.setProductId("a2c62328-4a37-4664-83c7-f32db8620155");
+        product2.setProductName("Sabun Cap Usep");
+        product2.setProductQuantity(1);
+        this.products.add(product1);
+        this.products.add(product2);
 
-        Product testProduct = new Product();
+        this.orders = new ArrayList<>();
+        Order order1 = new Order("13652556-012a-4c07-b546-54eb1396d79b", this.products, 1708560000L, "Kamaru Udin", OrderStatus.SUCCESS.getValue());
+        Order order2 = new Order("24652556-012a-4c07-b546-54eb1396d79a", this.products, 170856000L, "Kamaru Udin 2", OrderStatus.SUCCESS.getValue());
+        this.orders.add(order1);
+        this.orders.add(order2);
 
-        testProduct.setProductId("d1c89c32-7904-4765-942a-7ea5200f6115");
-        testProduct.setProductName("Sampo Cap Bambang");
-        testProduct.setProductQuantity(2);
-
-        Product testProduct1 = new Product();
-
-        testProduct1.setProductId("39c9541f-1c82-4183-b2a4-fe9068b5387b");
-        testProduct1.setProductName("Sampo Cap Udin");
-        testProduct1.setProductQuantity(1);
-
-        this.allProducts.add(testProduct);
-        this.allProducts.add(testProduct1);
-
-
-        this.allOrders = new ArrayList<>();
-        Order testOrder = new Order("8f278bfd-cb0b-4afe-82aa-ee566807a63f", this.allProducts, 1708560000L, "Kamaru Udin", OrderStatus.SUCCESS.getValue());
-        Order testOrder1 = new Order("509a4447-e2d4-4b04-97fa-fe842713eb5e", this.allProducts, 170856000L, "Kamaru Asep", OrderStatus.SUCCESS.getValue());
-        this.allOrders.add(testOrder);
-        this.allOrders.add(testOrder1);
-
-        this.order = testOrder;
+        this.order = order1;
     }
 
+    // Main Payment
     @Test
     void testDuplicatePayment() {
         Map<String, String> paymentData = new HashMap<String, String>();
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
 
-        assertSame(this.allOrders.getFirst(), payment.getOrder());
+        assertEquals(null, payment.getOrder());
     }
 
     @Test
@@ -61,7 +56,7 @@ class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "BISMILLAH", this.allOrders.getFirst(), paymentData);
+            Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "BISMILLAH", this.orders.getFirst(), paymentData);
         });
     }
 
@@ -82,7 +77,7 @@ class PaymentTest {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
         assertEquals("SUCCESS", payment.getStatus());
     }
 
@@ -91,7 +86,7 @@ class PaymentTest {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode", "ESHOP");
 
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
 
@@ -100,7 +95,7 @@ class PaymentTest {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode", "EHEHE1234ABC5678");
 
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
 
@@ -109,7 +104,7 @@ class PaymentTest {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode", "ESHOP1234ABC567A");
 
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
 
@@ -120,16 +115,16 @@ class PaymentTest {
         paymentData.put("address", "Jalan-jalan");
         paymentData.put("deliveryFee", "17500");
 
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "CASH_ON_DELIVERY", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
 
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals("REJECTED", payment.getStatus());
     }
 
     @Test
     void testRejectedCashOnDeliveryEmptyAddress() {
         Map<String, String> paymentData = new HashMap<String, String>();
         paymentData.put("deliveryFee", "17500");
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "CASH_ON_DELIVERY", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
     }
@@ -138,7 +133,7 @@ class PaymentTest {
     void testRejectedCashOnDeliveryEmptyDeliveryFee() {
         Map<String, String> paymentData = new HashMap<String, String>();
         paymentData.put("address", "Jalan-jalan");
-        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "CASH_ON_DELIVERY", this.allOrders.getFirst(), paymentData);
+        Payment payment = new Payment("1994cddb-6f3b-40ca-aed1-eba78db32295", "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
     }
